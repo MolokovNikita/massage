@@ -1,0 +1,24 @@
+.sign__btn {
+  background: rgba(248, 125, 243, 0.35);
+  border: none;
+  cursor: pointer;
+  padding: 0.7rem 3rem;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-family: var(--font-cormorant);
+  font-weight: bold;
+  border-radius: 2rem;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    box-shadow: 2px 2px 5px rgba(248, 125, 243, 0.3);
+    transform: translateY(1px);
+  }
+}
