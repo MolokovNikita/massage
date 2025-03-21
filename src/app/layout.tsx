@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond } from "next/font/google";
 import "./globals.scss";
+import Script from "next/script";
 
-const cormorantGaramond = Cormorant_Garamond({
+const cormorantCormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["cyrillic"],
-  weight: ["300", "700"],
+  weight: ["300"],
   style: ["normal", "italic"],
+});
+const cormorantCormorantBold = Cormorant_Garamond({
+  variable: "--font-cormorant-bold",
+  subsets: ["cyrillic"],
+  weight: ["700"],
+  style: ["normal"],
 });
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,7 +27,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${cormorantGaramond.variable}`}>{children}</body>
+      <body
+        className={`${cormorantCormorant.variable} ${cormorantCormorantBold.variable}`}
+      >
+        {children}
+        <Script
+          src="https://api-maps.yandex.ru/v3/?apikey=c9dc0e1b-b835-4995-9ffe-b07128f15143&lang=ru_RU"
+          strategy="beforeInteractive"
+        />
+      </body>
     </html>
   );
 }

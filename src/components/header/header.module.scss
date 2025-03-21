@@ -66,21 +66,24 @@
     &:first-child {
       &:hover {
         scale: 1.1;
-        filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(80%);
+        filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg)
+          brightness(119%) contrast(80%);
       }
     }
 
     &:nth-child(2) {
       &:hover {
         scale: 1.1;
-        filter: invert(25%) sepia(123%) saturate(2452%) hue-rotate(320deg) brightness(119%) contrast(130%); // Розовый
+        filter: invert(25%) sepia(123%) saturate(2452%) hue-rotate(320deg)
+          brightness(119%) contrast(130%); // Розовый
       }
     }
 
     &:nth-child(3) {
       &:hover {
         scale: 1.1;
-        filter: invert(40%) sepia(93%) saturate(1352%) hue-rotate(180deg) brightness(119%) contrast(80%); // Голубой
+        filter: invert(40%) sepia(93%) saturate(1352%) hue-rotate(180deg)
+          brightness(119%) contrast(80%); // Голубой
       }
     }
   }
@@ -158,7 +161,6 @@ input[type="checkbox"]:checked ~ .hamburger__lines .line3 {
   .nav__bar {
     font-size: 1.2rem;
   }
-
 }
 
 @media screen and (max-width: 950px) {

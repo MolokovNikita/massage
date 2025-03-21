@@ -54,7 +54,7 @@
           content: "";
           width: 10px;
           height: 10px;
-          background-color: rgb(243, 181, 239);;
+          background-color: rgb(243, 181, 239);
           position: absolute;
           left: 0;
           top: 50%;
@@ -74,24 +74,19 @@
       margin-top: 5rem;
     }
   }
-
 }
 
 .services__section {
   display: flex;
   flex-direction: column;
-  //justify-content: center;
-  //align-items: center;
-  //margin-top: 50px;
   max-width: 1550px;
   margin: 0 auto;
   width: 100%;
-  height: calc(100vh - 50px);
 
   .services__title {
     font-family: var(--font-cormorant);
     margin: 0 auto;
-    font-size: 2.2rem;
+    font-size: 2.2em;
     font-weight: 400;
     font-style: italic;
   }
@@ -99,30 +94,204 @@
   .services__subtitle {
     font-family: var(--font-cormorant);
     margin: 0 auto;
-    font-size: 1.1rem;
+    font-size: 1.1em;
     font-weight: 400;
     font-style: italic;
     margin-top: 1rem;
   }
+}
 
-  .massage__block {
+.course__section {
+  .course__title {
     display: flex;
-    flex-direction: row;
-    margin-top: 3rem;
+    justify-content: center;
+    font-family: var(--font-cormorant);
+    margin: 0 auto;
+    font-size: 2.2em;
+    font-weight: 400;
+    font-style: italic;
+  }
 
-    .massage__block_image_wrapper {
-      display: flex;
-      position: relative;
-      width: 30%;
-      height: 350px;
+  .course__subtitle {
+    width: 100%;
+    font-family: var(--font-cormorant);
+    margin: 0 auto;
+    font-size: 1.1em;
+    font-weight: 400;
+    font-style: italic;
+    width: 100%;
+    text-align: center;
 
-      img {
-        object-fit: cover;
-        border-radius: 0 15px 15px 0;;
-
-      }
+    .course__price {
+      font-family: var(--font-cormorant);
+      font-size: 1.5em;
+      font-weight: bold;
+      color: rgb(243, 181, 239);
     }
   }
 
+  .course__includes {
+    display: flex;
+    justify-content: center;
+    font-family: var(--font-cormorant);
+    margin: 0 auto;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    font-size: 2.2em;
+    font-weight: 400;
+  }
 
+  .course_description__container {
+    width: 60%;
+    margin: 0 auto;
+    font-family: var(--font-cormorant);
+    font-weight: 400;
+    font-size: 1.6em;
+
+    .course__content {
+      font-weight: 400;
+    }
+
+    .course_benefits__list {
+      display: flex;
+      flex-direction: column;
+      margin-top: 2rem;
+      list-style: none;
+
+      li {
+        &::before {
+          content: "→ ";
+        }
+      }
+    }
+  }
+}
+
+.sign__section {
+  margin-top: 5rem;
+
+  .sign__title {
+    display: flex;
+    justify-content: center;
+    font-family: var(--font-cormorant);
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    font-size: 2.2em;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .section_sign_btn__container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.reviews__section {
+  .reviews__title {
+    display: flex;
+    justify-content: center;
+    font-family: var(--font-cormorant);
+    margin: 6rem auto;
+    margin-bottom: 3rem;
+    font-size: 2.2em;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .reviews__list {
+    display: flex;
+    flex-direction: column;
+
+    li {
+      display: flex;
+      position: relative;
+      margin: 0 auto;
+      width: 40%;
+      max-width: 700px;
+      height: 250px;
+      margin-bottom: 3rem;
+
+      img {
+        object-fit: contain;
+      }
+    }
+  }
+}
+
+.contacts__section {
+  .contacts__title {
+    display: flex;
+    justify-content: center;
+    font-family: var(--font-cormorant);
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    font-size: 2.2em;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .social__list {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+
+    li {
+      margin-left: 2rem;
+
+      &:first-child {
+        &:hover {
+          scale: 1.1;
+          filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg)
+            brightness(119%) contrast(80%);
+        }
+      }
+
+      &:nth-child(2) {
+        &:hover {
+          scale: 1.1;
+          filter: invert(25%) sepia(123%) saturate(2452%) hue-rotate(320deg)
+            brightness(119%) contrast(130%); // Розовый
+        }
+      }
+
+      &:nth-child(3) {
+        &:hover {
+          scale: 1.1;
+          filter: invert(40%) sepia(93%) saturate(1352%) hue-rotate(180deg)
+            brightness(119%) contrast(80%); // Голубой
+        }
+      }
+    }
+
+    li:first-child {
+      margin-left: 0;
+    }
+  }
+
+  .contacts__address {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h3 {
+      font-size: 1.6em;
+      font-weight: 400;
+    }
+  }
+
+  .map__container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 10rem;
+  }
 }

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/yandex-maps": "^2.1.36",
     "next": "15.2.0",
     "next-gallery": "^2.1.1",
     "react": "^19.0.0",
