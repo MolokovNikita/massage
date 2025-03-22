@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond } from "next/font/google";
 import "./globals.scss";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 const cormorantCormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -61,6 +62,7 @@ export default function RootLayout({
         className={`${cormorantCormorant.variable} ${cormorantCormorantBold.variable}`}
       >
         <SpeedInsights />
+        <Analytics />
         {children}
       </body>
     </html>
