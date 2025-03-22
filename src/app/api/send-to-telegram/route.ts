@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     const message = [
       "Новая запись!",
       `Имя: ${name}`,
-      `Телефон: ${phone}`,
+      `Телефон: +7${phone}`,
       `Возможная ссылка на Whatsapp wa.me/+7${phone}`,
       `Услуга: ${service}`,
     ].join("\n\n");
