@@ -1,115 +1,196 @@
 "use client";
-import { useState } from "react";
+import {useState, useRef, useEffect} from "react";
 import Image from "next/image";
-import { FaChevronLeft, FaChevronRight, FaTimes } from "react-icons/fa";
+import {FaChevronLeft, FaChevronRight, FaTimes} from "react-icons/fa";
+import ImageGallery, {ReactImageGalleryItem, ReactImageGalleryProps} from "react-image-gallery";
+import {motion, AnimatePresence} from "framer-motion";
 import styles from "./gallery.module.scss";
+import "react-image-gallery/styles/css/image-gallery.css";
 
 export type ImageType = {
-  src: string;
-  alt: string;
-  aspect_ratio?: number;
+    src: string;
+    alt: string;
+    aspect_ratio?: number;
 };
 
-type ImageGalleryProps = {
-  images: ImageType[];
-  isThumbnail?: boolean;
+type GalleryProps = {
+    images: ImageType[];
+    isThumbnail?: boolean;
 };
 
-export default function ImageGallery({
-  images,
-  isThumbnail = false,
-}: ImageGalleryProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+interface CustomImageGalleryItem extends ReactImageGalleryItem {
+    originalClass?: string;
+    thumbnailClass?: string;
+}
 
-  if (images.length === 0) return <p>No images available</p>;
+export default function Gallery({images, isThumbnail = false}: GalleryProps) {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const modalRef = useRef<HTMLDivElement>(null);
 
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-  };
+    useEffect(() => {
+        if (isModalOpen) {
+            document.documentElement.style.overflow = "hidden";
+            document.body.style.overflow = "hidden";
+        } else {
+            document.documentElement.style.overflow = "";
+            document.body.style.overflow = "";
+        }
 
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-  };
+        const handleClickOutside = (event: MouseEvent) => {
+            if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+                setIsModalOpen(false);
+            }
+        };
+        const handleEsc = (event: KeyboardEvent) => {
+            if (event.key === 'Escape' || event.key === 'Enter') {
+                setIsModalOpen(false);
+            }
+        };
 
-  return (
-    <div className={styles.gallery}>
-      {/* Основное изображение */}
-      <div
-        className={styles.mainImageWrapper}
-        style={{
-          backgroundImage: `url(${images[currentIndex].src})`,
-        }}
-      >
-        {images.length > 1 && (
-          <>
-            <button className={styles.arrowLeft} onClick={handlePrev}>
-              <FaChevronLeft />
-            </button>
-            <button className={styles.arrowRight} onClick={handleNext}>
-              <FaChevronRight />
-            </button>
-          </>
-        )}
-        <Image
-          src={images[currentIndex].src}
-          alt={`Image ${currentIndex + 1}`}
-          fill
-          className={styles.mainImage}
-          onClick={() => setIsModalOpen(true)}
-        />
-      </div>
-      {/* Миниатюры */}
-      {isThumbnail && (
-        <div className={styles.thumbnails}>
-          {images.map((img, index) => (
+        document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener("keydown", handleEsc);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("keydown", handleEsc);
+            document.documentElement.style.overflow = "";
+            document.body.style.overflow = "";
+        };
+    }, [isModalOpen]);
+
+    if (images.length === 0) return <p>Нет доступных фотографий</p>;
+
+    const formattedImages: CustomImageGalleryItem[] = images.map((img) => ({
+        original: img.src,
+        thumbnail: isThumbnail ? img.src : undefined,
+        originalAlt: img.alt,
+        thumbnailAlt: img.alt,
+        originalClass: styles.mainImage,
+        thumbnailClass: styles.thumbnail,
+    }));
+
+    const renderItem = (item: CustomImageGalleryItem, index: number) => (
+        <div className={styles.mainImageWrapper}>
             <div
-              key={index}
-              className={`${styles.thumbnail} ${index === currentIndex ? styles.active : ""}`}
-              onClick={() => setCurrentIndex(index)}
-            >
-              <Image
-                src={img.src}
-                alt={`Thumbnail ${index + 1}`}
-                width={80}
-                height={80}
-              />
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* Модальное окно */}
-      {isModalOpen && (
-        <div className={styles.modal}>
-          <div className={styles.modalContent}>
-            <button
-              className={styles.closeButton}
-              onClick={() => setIsModalOpen(false)}
-            >
-              <FaTimes />
-            </button>
-
+                className={styles.imageBlurBackground}
+                style={{backgroundImage: `url(${item.original})`}}
+            />
             <Image
-              src={images[currentIndex].src}
-              alt={`Fullscreen ${currentIndex + 1}`}
-              fill
-              style={{ objectFit: "contain" }}
+                src={item.original}
+                alt={item.originalAlt || ""}
+                fill
+                priority={item.original === '/first_photo.png'}
+                className={item.originalClass || ""}
+                onClick={() => {
+                    setCurrentIndex(index);
+                    setIsModalOpen(true);
+                }}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                draggable={false}
+                tabIndex={-1}
+            />
+        </div>
+    );
+
+    const renderLeftNav: ReactImageGalleryProps["renderLeftNav"] = (onClick, disabled) => (
+        <button
+            className={styles.arrowLeft}
+            onClick={onClick as React.MouseEventHandler<HTMLButtonElement>}
+            disabled={disabled}
+        >
+            <FaChevronLeft/>
+        </button>
+    );
+
+    const renderRightNav: ReactImageGalleryProps["renderRightNav"] = (onClick, disabled) => (
+        <button
+            className={styles.arrowRight}
+            onClick={onClick as React.MouseEventHandler<HTMLButtonElement>}
+            disabled={disabled}
+        >
+            <FaChevronRight/>
+        </button>
+    );
+
+    // Анимация для модального окна
+    const modalVariants = {
+        hidden: {opacity: 0, scale: 0.8},
+        visible: {opacity: 1, scale: 1},
+        exit: {opacity: 0, scale: 0.8},
+    };
+
+    // Анимация для фона
+    const backdropVariants = {
+        hidden: {opacity: 0},
+        visible: {opacity: 1},
+    };
+
+    return (
+        <div className={styles.gallery}>
+            <ImageGallery
+                items={formattedImages}
+                infinite={true}
+                showPlayButton={false}
+                showIndex={true}
+                showFullscreenButton={false}
+                showNav={images.length > 1}
+                renderItem={(item) => renderItem(item, formattedImages.indexOf(item))}
+                renderLeftNav={renderLeftNav}
+                renderRightNav={renderRightNav}
+                additionalClass={styles.customGallery}
+                slideDuration={250}
             />
 
-            {images.length > 1 && (
-              <>
-                <button className={styles.modalArrowLeft} onClick={handlePrev}>
-                  <FaChevronLeft />
-                </button>
-                <button className={styles.modalArrowRight} onClick={handleNext}>
-                  <FaChevronRight />
-                </button>
-              </>
-            )}
-          </div>
+            <AnimatePresence>
+                {isModalOpen && (
+                    <motion.div
+                        className={styles.modal}
+                        onClick={(e: React.MouseEvent<HTMLElement>) => {
+                            if (e.target === e.currentTarget) {
+                                setIsModalOpen(false);
+                            }
+                        }}
+                        variants={backdropVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="hidden"
+                    >
+                        <motion.div
+                            className={styles.modalContent}
+                            ref={modalRef}
+                            onClick={(e: React.MouseEvent<HTMLElement>) => e.stopPropagation()}
+                            variants={modalVariants}
+                            initial="hidden"
+                            animate="visible"
+                            exit="exit"
+                        >
+                            <button
+                                className={styles.closeButton}
+                                onClick={(e: React.MouseEvent<HTMLElement>) => {
+                                    e.stopPropagation();
+                                    setIsModalOpen(false);
+                                }}
+                            >
+                                <FaTimes/>
+                            </button>
+
+                            <ImageGallery
+                                items={formattedImages}
+                                infinite={true}
+                                showPlayButton={false}
+                                showFullscreenButton={false}
+                                showNav={images.length > 1}
+                                renderLeftNav={renderLeftNav}
+                                renderRightNav={renderRightNav}
+                                additionalClass={styles.modalGallery}
+                                slideDuration={250}
+                                startIndex={currentIndex}
+                            />
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
-      )}
-    </div>
-  );
+    );
 }

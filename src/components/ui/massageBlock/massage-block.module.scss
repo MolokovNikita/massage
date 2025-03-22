@@ -4,12 +4,38 @@
   margin-top: 3em;
   padding-bottom: 5em;
 
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    height: auto;
+    margin-top: 30px;
+  }
+
   .massage__block_image_wrapper {
     display: flex;
     position: relative;
     margin-left: 0;
     width: 30%;
     height: 60vh;
+    min-width: 350px;
+    @media screen and (min-width: 1550px) {
+      img {
+        border-radius: 15px !important;
+      }
+    }
+    @media screen and (max-width: 1024px) {
+      margin: 0 auto;
+      width: 50%;
+      img {
+        border-radius: 15px !important;
+      }
+    }
+    @media screen and (max-width: 700px) {
+      height: 40vh;
+    }
+
+    @media (max-width: 360px) {
+      min-width: 300px;
+    }
 
     img {
       object-fit: cover;
@@ -31,6 +57,11 @@
     flex-direction: column;
     width: 50%;
     margin-left: 10%;
+    @media (max-width: 1024px) {
+      margin: 0 auto;
+      width: 80%;
+    }
+
 
     h3 {
       font-family: var(--font-cormorant);
@@ -50,6 +81,9 @@
     .massage__name {
       display: flex;
       justify-content: center;
+      @media (max-width: 1024px) {
+        margin: 2rem 0;
+      }
     }
 
     .massage__benefits {
@@ -71,14 +105,18 @@
       display: flex;
       justify-content: space-evenly;
       margin-top: 1rem;
+      flex-wrap: wrap;
 
       .price__container {
         h3 {
           margin-bottom: 0;
         }
 
+        min-width: 200px;
+
         .prices__list {
           font-size: 1.6em;
+          margin-bottom: 1.2rem;
 
           li {
             list-style: none;
@@ -95,6 +133,8 @@
         h3 {
           margin-bottom: 0;
         }
+
+        min-width: 200px;
 
         .abonemets__list {
           font-size: 1.6em;
@@ -122,10 +162,4 @@
   }
 }
 
-@media screen and (min-width: 1550px) {
-  .massage__block_image_wrapper {
-    img {
-      border-radius: 15px !important;
-    }
-  }
-}
+

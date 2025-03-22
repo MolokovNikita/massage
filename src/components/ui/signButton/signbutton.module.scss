@@ -10,9 +10,8 @@
   font-weight: bold;
   border-radius: 2rem;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
-  transition:
-    box-shadow 0.3s ease,
-    transform 0.2s ease;
+  transition: box-shadow 0.3s ease,
+  transform 0.2s ease;
 
   &:hover {
     box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
@@ -22,5 +21,235 @@
   &:active {
     box-shadow: 2px 2px 5px rgba(248, 125, 243, 0.3);
     transform: translateY(1px);
+  }
+}
+
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modalContent {
+  background: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  scale: 2;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #333;
+    scale: 2.1;
+  }
+}
+
+.modalTitle {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 1.8rem;
+}
+
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.inputGroup {
+  position: relative;
+  width: 100%;
+
+  input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-bottom-color: #f3b5ef;
+
+      & + .inputBorder {
+        width: 100%;
+      }
+    }
+
+    &::placeholder {
+      color: #999;
+    }
+  }
+}
+
+.inputBorder {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #f3b5ef;
+  transition: width 0.3s ease;
+}
+
+.selectWrapper {
+  position: relative;
+
+  select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    appearance: none;
+    background: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 12px center/16px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #f3b5ef;
+    }
+  }
+}
+
+.datePicker {
+  input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #f3b5ef;
+    }
+  }
+}
+
+.submitButton {
+  background: linear-gradient(135deg, #f3b5ef 0%, #e89de3 100%);
+  border: none;
+  padding: 15px;
+  color: white;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(232, 157, 227, 0.4);
+  }
+}
+
+.loader {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+.successMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  background: #e8f5e9;
+  border-radius: 8px;
+  color: #2e7d32;
+  font-size: 1.1rem;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: #2e7d32;
+  }
+}
+
+.errorMessage {
+  color: #d32f2f;
+  background: #ffebee;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .modalContent {
+    padding: 25px;
+  }
+
+  .modalTitle {
+    font-size: 1.4rem;
+  }
+
+  .modalForm {
+    gap: 20px;
   }
 }

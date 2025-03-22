@@ -23,6 +23,11 @@
   height: 100%;
   margin-left: 10%;
   font-size: 1.4rem;
+
+  .nav__item a.active {
+    color: white;
+
+  }
 }
 
 .menu__items {
@@ -49,6 +54,10 @@
   }
 }
 
+.nav_social__wrapper {
+  display: none;
+}
+
 .social__list {
   display: flex;
   list-style: none;
@@ -66,24 +75,21 @@
     &:first-child {
       &:hover {
         scale: 1.1;
-        filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg)
-          brightness(119%) contrast(80%);
+        filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(80%);
       }
     }
 
     &:nth-child(2) {
       &:hover {
         scale: 1.1;
-        filter: invert(25%) sepia(123%) saturate(2452%) hue-rotate(320deg)
-          brightness(119%) contrast(130%); // Розовый
+        filter: invert(25%) sepia(123%) saturate(2452%) hue-rotate(320deg) brightness(119%) contrast(130%); // Розовый
       }
     }
 
     &:nth-child(3) {
       &:hover {
         scale: 1.1;
-        filter: invert(40%) sepia(93%) saturate(1352%) hue-rotate(180deg)
-          brightness(119%) contrast(80%); // Голубой
+        filter: invert(40%) sepia(93%) saturate(1352%) hue-rotate(180deg) brightness(119%) contrast(80%); // Голубой
       }
     }
   }
@@ -164,8 +170,28 @@ input[type="checkbox"]:checked ~ .hamburger__lines .line3 {
 }
 
 @media screen and (max-width: 950px) {
-  .social__list {
+  .header {
+    background: rgb(243, 181, 239, 0.9);
+
+  }
+  .nav_social__wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+  .header_social__wrapper {
     display: none;
+  }
+  .social__list {
+    right: auto;
+
+    li {
+      margin-right: 20px !important;
+
+      &:last-child {
+        margin-right: 0 !important;
+      }
+    }
   }
   .checkbox {
     display: block;
@@ -174,14 +200,22 @@ input[type="checkbox"]:checked ~ .hamburger__lines .line3 {
   .hamburger__lines {
     display: flex;
   }
+  .nav__bar {
+    width: 60%;
+    margin-left: 10%;
+    font-size: 1.4rem;
+
+
+    .nav__item a.active {
+      color: rgb(243, 181, 239);
+    }
+  }
   .menu__items {
     position: fixed;
     top: 50px;
     left: 0;
     right: 0;
     bottom: 0;
-    //box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
-    //backdrop-filter: blur(2px);
     background: white;
     flex-direction: column;
     height: calc(100vh - 50px);
@@ -190,9 +224,15 @@ input[type="checkbox"]:checked ~ .hamburger__lines .line3 {
     margin: 0;
 
     li {
-      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
       justify-content: center;
+      height: 10%;
     }
+  }
+  .location__name {
+    width: 300px;
   }
   .checkbox:checked ~ .menu__items {
     transform: translateX(0);

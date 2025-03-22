@@ -4,19 +4,51 @@
 
 .topic__section {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   margin-top: 50px;
+  padding: 20px;
   width: 100%;
-  height: calc(100vh - 50px);
+  min-height: calc(100vh - 50px);
+  height: auto;
+
+  @media (max-width: 1024px) {
+    flex-wrap: wrap;
+    height: auto;
+    margin-top: 30px;
+  }
+  @media screen and (max-width: 660px) {
+    padding: 0;
+    margin: 0;
+    margin-top: 5rem;
+    width: 100%;
+  }
 
   .image__wraper {
-    display: flex;
-    width: 40%;
+    width: 50%;
     max-width: 600px;
-    min-width: 400px;
-    height: 80%;
-    max-height: 800px;
-    margin: auto 0;
+    min-width: unset;
+    height: auto;
+    margin: 20px;
+
+    @media screen and (max-width: 1250px) {
+      width: 80%;
+    }
+    @media (max-width: 1024px) {
+      width: 100%;
+      max-width: 500px;
+      margin: 20px auto;
+      min-height: 600px;
+    }
+
+
+    @media (max-width: 425px) {
+      min-height: 450px;
+      padding: 0;
+      margin: 0;
+    }
+
+
   }
 
   .topic__container {
@@ -25,6 +57,11 @@
     justify-content: center;
     margin: 6rem 0;
     margin-left: 5rem;
+    @media (max-width: 1024px) {
+      margin: 0;
+      margin-top: 3rem;
+      padding: 0 3rem;
+    }
 
     h3 {
       font-size: 1.6em;
@@ -74,6 +111,8 @@
       margin-top: 5rem;
     }
   }
+
+
 }
 
 .services__section {
@@ -82,6 +121,10 @@
   max-width: 1550px;
   margin: 0 auto;
   width: 100%;
+
+  @media (max-width: 1024px) {
+    margin-top: 4rem;
+  }
 
   .services__title {
     font-family: var(--font-cormorant);
@@ -93,6 +136,9 @@
 
   .services__subtitle {
     font-family: var(--font-cormorant);
+    display: flex;
+    align-items: center;
+    text-align: center;
     margin: 0 auto;
     font-size: 1.1em;
     font-weight: 400;
@@ -147,6 +193,9 @@
     font-family: var(--font-cormorant);
     font-weight: 400;
     font-size: 1.6em;
+    @media (max-width: 720px) {
+      width: 80%;
+    }
 
     .course__content {
       font-weight: 400;
@@ -173,6 +222,8 @@
   .sign__title {
     display: flex;
     justify-content: center;
+    align-items: center;
+    text-align: center;
     font-family: var(--font-cormorant);
     margin: 0 auto;
     margin-bottom: 3rem;
@@ -212,6 +263,12 @@
       max-width: 700px;
       height: 250px;
       margin-bottom: 3rem;
+      min-width: 400px;
+      @media screen and (max-width: 450px) {
+        min-width: unset;
+        width: 100%;
+
+      }
 
       img {
         object-fit: contain;
@@ -245,24 +302,21 @@
       &:first-child {
         &:hover {
           scale: 1.1;
-          filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg)
-            brightness(119%) contrast(80%);
+          filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(80%);
         }
       }
 
       &:nth-child(2) {
         &:hover {
           scale: 1.1;
-          filter: invert(25%) sepia(123%) saturate(2452%) hue-rotate(320deg)
-            brightness(119%) contrast(130%); // Розовый
+          filter: invert(25%) sepia(123%) saturate(2452%) hue-rotate(320deg) brightness(119%) contrast(130%); // Розовый
         }
       }
 
       &:nth-child(3) {
         &:hover {
           scale: 1.1;
-          filter: invert(40%) sepia(93%) saturate(1352%) hue-rotate(180deg)
-            brightness(119%) contrast(80%); // Голубой
+          filter: invert(40%) sepia(93%) saturate(1352%) hue-rotate(180deg) brightness(119%) contrast(80%); // Голубой
         }
       }
     }
@@ -280,6 +334,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 
     h3 {
       font-size: 1.6em;
@@ -289,9 +344,24 @@
 
   .map__container {
     width: 50%;
+    max-width: 1200px;
+    min-width: 300px;
+    height: 500px;
     display: flex;
     justify-content: center;
     margin: 0 auto;
     margin-bottom: 10rem;
+    @media screen and (max-width: 1700px) {
+      width: 80%;
+    }
+    @media screen and (max-width: 500px) {
+      height: 300px;
+    }
+    @media screen and (max-width: 310px) {
+      min-width: unset;
+    }
   }
 }
+
+
+

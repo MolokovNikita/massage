@@ -1,44 +1,82 @@
+
 .gallery {
   max-width: 1200px;
   padding: 0 20px;
   width: 100%;
-}
-.mainImageWrapper {
-  width: 100%;
   height: 100%;
-  position: relative;
-  display: flex;
-  background: rgba(202, 205, 209, 0.5);
-  margin-bottom: 1rem;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  transition: transform 0.3s;
-  z-index: 1;
+  //@media (max-width: 425px) {
+  //  width: 80%;
+  //}
+  @media (max-width: 660px) {
+    padding: 0;
+  }
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: inherit;
-    background-size: cover;
-    background-position: center;
-    filter: blur(10px);
-    z-index: -1;
+
+  .image-gallery-content {
+    position: relative;
+    height: 100%;
+
+  }
+
+  .image-gallery-slide-wrapper {
+    overflow: hidden;
+
+    .image-gallery-slide {
+      overflow: hidden;
+
+      img {
+        -webkit-user-drag: none;
+      }
+    }
   }
 }
 
-.mainImage {
+
+.gallery:hover {
+  .arrowLeft,
+  .arrowRight {
+    opacity: 1;
+  }
+}
+
+.mainImageWrapper {
+  position: relative;
   width: 100%;
   height: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-  user-drag: none;
+  cursor: pointer;
+
+  img {
+    border-radius: 30px !important;
+
+  }
+
+
+  &:hover {
+    .image-gallery-left-nav,
+    .image-gallery-right-nav {
+      opacity: 1;
+    }
+  }
+}
+
+.imageBlurBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px);
+  z-index: -1;
+  opacity: 0.7;
+  border-radius: 30px;
+
+}
+
+.mainImage {
+  object-fit: cover !important;
+  padding: 20px;
   -webkit-user-drag: none;
   user-select: none;
   -moz-user-select: none;
@@ -46,12 +84,14 @@
   -ms-user-select: none;
 }
 
+
 .arrowLeft,
 .arrowRight {
+  opacity: 0;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.8) !important;
   border: none;
   border-radius: 50%;
   width: 40px;
@@ -61,13 +101,18 @@
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s;
-  opacity: 0;
-  visibility: hidden;
   z-index: 2;
+  visibility: visible !important;
+
+  @media (max-width: 660px) {
+    opacity: 0 !important;
+  }
+
   &:hover {
-    background: white;
+    background: white !important;
     transform: translateY(-50%) scale(1.1);
   }
+
   svg {
     width: 20px;
     height: 20px;
@@ -75,55 +120,11 @@
 }
 
 .arrowLeft {
-  left: 20px;
+  left: 20px !important;
 }
 
 .arrowRight {
-  right: 20px;
-}
-.mainImageWrapper:hover .arrowLeft,
-.mainImageWrapper:hover .arrowRight {
-  opacity: 1;
-  visibility: visible;
-}
-.thumbnails {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-  //TODO Сделайть адаптивную thumbnail
-  gap: 10px;
-  padding: 10px 0;
-}
-
-.thumbnail {
-  position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.3s;
-  background: silver;
-  display: flex;
-  border: 2px solid transparent;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-
-  &.active {
-    border-color: #0070f3;
-    box-shadow: 0 4px 12px rgba(0, 112, 243, 0.3);
-  }
-
-  img {
-    width: 100%;
-    object-fit: contain;
-    margin: auto;
-    user-drag: none;
-    -webkit-user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-  }
+  right: 20px !important;
 }
 
 .modal {
@@ -137,24 +138,39 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 20px;
+  cursor: pointer;
+
+  @media (max-width: 660px) {
+    align-items: flex-start;
+    padding: 60px 0 0;
+  }
 }
 
 .modalContent {
   position: relative;
-  width: 90%;
+  width: 100%;
   height: 90%;
   max-width: 1200px;
-  img {
-    user-drag: none;
-    -webkit-user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+  display: flex;
+  flex-direction: column;
+  cursor: default;
+
+  @media (max-width: 425px) {
+    height: auto;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    div {
+      padding: 0 !important;
+    }
   }
+
 }
 
 .closeButton {
+  z-index: 1001;
+  pointer-events: auto !important;
   position: absolute;
   top: 20px;
   right: 20px;
@@ -163,41 +179,77 @@
   color: white;
   font-size: 2rem;
   cursor: pointer;
-  z-index: 1001;
   transition: transform 0.3s;
 
   &:hover {
     transform: scale(1.2);
   }
-}
 
-.modalArrowLeft,
-.modalArrowRight {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  color: white;
-  font-size: 2rem;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.4);
+  @media (max-width: 660px) {
+    top: 0;
+    right: 10px;
+    font-size: 3rem;
   }
 }
 
-.modalArrowLeft {
-  left: 30px;
+.modalGallery {
+  height: 100%;
+  position: relative;
+
+  .image-gallery-slide-wrapper {
+    height: 100%;
+
+    @media (max-width: 660px) {
+      height: auto;
+      flex-grow: 1;
+    }
+  }
+
+  .image-gallery-slide {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    height: auto !important;
+    transition: height 0.3s ease-in-out;
+
+    img {
+      object-fit: cover !important;
+      width: auto !important;
+      max-height: 80vh;
+      position: relative !important;
+
+      @media (max-width: 660px) {
+        max-height: 50vh;
+        width: 100% !important;
+        height: auto !important;
+      }
+    }
+  }
 }
 
-.modalArrowRight {
-  right: 30px;
+.thumbnails {
+  margin-top: 20px;
+
+  .image-gallery-thumbnails-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 10px;
+    padding: 0 10px;
+  }
+
+  .image-gallery-thumbnail {
+    border: 2px solid transparent;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s;
+
+    &.active {
+      border-color: #0070f3;
+      box-shadow: 0 4px 12px rgba(0, 112, 243, 0.3);
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
 }
