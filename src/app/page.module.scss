@@ -334,16 +334,14 @@
     width: 50%;
     max-width: 1200px;
     min-width: 300px;
-    height: 500px;
+    height: 400pxpx;
     display: flex;
     justify-content: center;
     margin: 0 auto 10rem;
     @media screen and (max-width: 1700px) {
       width: 80%;
     }
-    @media screen and (max-width: 500px) {
-      height: 300px;
-    }
+ 
     @media screen and (max-width: 310px) {
       min-width: unset;
     }

@@ -30,7 +30,6 @@ export default function RootLayout({
             className={`${cormorantCormorant.variable} ${cormorantCormorantBold.variable}`}
         >
         {children}
-
         </body>
         </html>
     );
