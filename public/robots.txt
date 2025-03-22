@@ -1,0 +1,13 @@
+# *
+User-agent: *
+Allow: /
+
+# Googlebot-Image
+User-agent: Googlebot-Image
+Disallow: /
+
+# Host
+Host: https://stroginomassage.ru/
+
+# Sitemaps
+Sitemap: https://stroginomassage.ru/sitemap.xml
