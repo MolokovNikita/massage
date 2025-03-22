@@ -1,4 +1,3 @@
-// components/header/Header.tsx
 import styles from "./header.module.scss";
 import NavBar from "./NavBar";
 import SocialList from "./SocialList";
