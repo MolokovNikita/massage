@@ -1,11 +1,13 @@
 import styles from "./page.module.scss";
 import Header from "@/components/header/Header";
-import ImageGallery from "@/components/ui/gallery/Gallery";
-import {ImageType} from "@/components/ui/gallery/Gallery";
-import SignButton from "@/components/ui/signButton/SignButton";
-import MassageBlock from "@/components/ui/massageBlock/MassageBlock";
+import ImageGallery from "@/components/ui/cards/gallery/Gallery";
+import {ImageType} from "@/components/ui/cards/gallery/Gallery";
+import SignButton from "@/components/ui/buttons/sign-button/SignButton";
+import MassageBlock from "@/components/ui/cards/massageBlock/MassageBlock";
 import Image from "next/image";
 import YandexMap from "@/components/Map";
+import {FadeInRight, FadeInLeft, FadeInBottom} from "@/components/ui/animations/AnimatedBlocks";
+import SignModal from "@/components/ui/modals/signModal/SignModal";
 
 export default function Page() {
     const images: ImageType[] = [
@@ -20,35 +22,39 @@ export default function Page() {
             <main>
                 <Header/>
                 <section id="about" className={styles.topic__section}>
-                    <div className={styles.image__wraper}>
+                    <div className={styles.image__wrapper}>
                         <ImageGallery images={images} isThumbnail={false}/>
                     </div>
                     <div className={styles.topic__container}>
-                        <h3 className={styles.topic_container__item1}>
-                            Меня зовут Наталья, и я профессионально занимаюсь аппаратным
-                            массажем в{" "}
-                            <span className={styles.topic_container__span}>Строгино</span>.
-                        </h3>
-                        <h3 className={styles.topic_container__item2}>
-                            Помогаю людям выглядеть лучше, чувствовать себя легче и
-                            избавляться от напряжения.
-                        </h3>
-                        <h3 className={styles.topic_container__item3}>Если вы хотите:</h3>
-                        <ul className={styles.topic_container__list}>
-                            <li>Улучшить тонус и упругость кожи</li>
-                            <li>Избавиться от целлюлита и отеков</li>
-                            <li>Снять усталость и расслабиться</li>
-                            <li>Проработать мышцы после тренировок</li>
-                        </ul>
-                        <h3 className={styles.topic_container__item4}>
-                            Тогда вам точно стоит попробовать аппаратный массаж!
-                        </h3>
-                        <h3 className={styles.topic_container__item5}>
-                            Записывайтесь на сеанс – результат вас приятно удивит!
-                        </h3>
-                        <div className={styles.sign_btn__container}>
-                            <SignButton/>
-                        </div>
+                        <FadeInRight>
+                            <h3 className={styles.topic_container__item1}>
+                                Меня зовут Наталья, и я профессионально занимаюсь аппаратным
+                                массажем в{" "}
+                                <span className={styles.topic_container__span}>Строгино</span>.
+                            </h3>
+                            <h3 className={styles.topic_container__item2}>
+                                Помогаю людям выглядеть лучше, чувствовать себя легче и
+                                избавляться от напряжения.
+                            </h3>
+                            <h3 className={styles.topic_container__item3}>Если вы хотите:</h3>
+                            <ul className={styles.topic_container__list}>
+                                <li>Улучшить тонус и упругость кожи</li>
+                                <li>Избавиться от целлюлита и отеков</li>
+                                <li>Снять усталость и расслабиться</li>
+                                <li>Проработать мышцы после тренировок</li>
+                            </ul>
+                            <h3 className={styles.topic_container__item4}>
+                                Тогда вам точно стоит попробовать аппаратный массаж!
+                            </h3>
+                            <h3 className={styles.topic_container__item5}>
+                                Записывайтесь на сеанс – результат вас приятно удивит!
+                            </h3>
+                        </FadeInRight>
+                        <FadeInRight delay={0.2}>
+                            <div className={styles.sign_btn__container}>
+                                <SignButton modal={SignModal}/>
+                            </div>
+                        </FadeInRight>
                     </div>
                 </section>
                 <section id="services" className={styles.services__section}>
@@ -126,104 +132,122 @@ export default function Page() {
                         isInverted={false}
                     />
                     <section className={styles.course__section}>
-                        <h1 className={styles.course__title}>КУРС ПОХУДЕНИЯ</h1>
-                        <h2 className={styles.course__subtitle}>
-                            10 сеансов оn <span className={styles.course__price}>10 990</span>{" "}
-                            руб.
-                        </h2>
-                        <h1 className={styles.course__includes}>Что входит в курс ?</h1>
-                        <div className={styles.course_description__container}>
-                            <h3 className={styles.course__content}>
-                                Комплексная программа аппаратного массажа, направленная на
-                                уменьшение объемов, улучшение тонуса кожи и ускорение метаболизма.
-                                Включает индивидуальный подбор техник.
-                            </h3>
-                            <ul className={styles.course_benefits__list}>
-                                <li>
-                                    Вакуумный массаж всего тела – детокс и антицеллюлитный эффект
-                                </li>
-                                <li>RF-лифтинг тела – подтяжка и омоложение кожи</li>
-                                <li>Массаж сферами – улучшение микроциркуляции и лимфодренажа</li>
-                                <li>Контрастные обертывания – улучшение обмена веществ</li>
-                                <li>Вибрационный массаж – релакс и восстановление</li>
-                            </ul>
-                        </div>
+                        <FadeInLeft>
+                            <h1 className={styles.course__title}>КУРС ПОХУДЕНИЯ</h1>
+                        </FadeInLeft>
+                        <FadeInLeft delay={0.2}>
+                            <h2 className={styles.course__subtitle}>
+                                10 сеансов оn <span className={styles.course__price}>10 990</span>{" "}
+                                руб.
+                            </h2>
+                        </FadeInLeft>
+                        <FadeInRight>
+                            <h1 className={styles.course__includes}>Что входит в курс ?</h1>
+                        </FadeInRight>
+                        <FadeInRight delay={0.2}>
+                            <div className={styles.course_description__container}>
+                                <h3 className={styles.course__content}>
+                                    Комплексная программа аппаратного массажа, направленная на
+                                    уменьшение объемов, улучшение тонуса кожи и ускорение метаболизма.
+                                    Включает индивидуальный подбор техник.
+                                </h3>
+                                <ul className={styles.course_benefits__list}>
+                                    <li>
+                                        Вакуумный массаж всего тела – детокс и антицеллюлитный эффект
+                                    </li>
+                                    <li>RF-лифтинг тела – подтяжка и омоложение кожи</li>
+                                    <li>Массаж сферами – улучшение микроциркуляции и лимфодренажа</li>
+                                    <li>Контрастные обертывания – улучшение обмена веществ</li>
+                                    <li>Вибрационный массаж – релакс и восстановление</li>
+                                </ul>
+                            </div>
+                        </FadeInRight>
                     </section>
                     <section className={styles.sign__section}>
-                        <h1 className={styles.sign__title}>
-                            Запишитесь на сеанс и почувствуйте разницу!
-                        </h1>
-                        <div className={styles.section_sign_btn__container}>
-                            <SignButton/>
-                        </div>
+                        <FadeInRight>
+                            <h1 className={styles.sign__title}>
+                                Запишитесь на сеанс и почувствуйте разницу!
+                            </h1>
+                        </FadeInRight>
+                        <FadeInRight delay={0.3}>
+                            <div className={styles.section_sign_btn__container}>
+                                <SignButton modal={SignModal}/>
+                            </div>
+                        </FadeInRight>
                     </section>
                 </section>
                 <section id="reviews" className={styles.reviews__section}>
-                    <h1 className={styles.reviews__title}>ОТЗЫВЫ</h1>
-                    <ul className={styles.reviews__list}>
-                        <li>
-                            <Image src={"/first_review.png"} alt={"Первый отзыв"} fill
-                                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"/>
-                        </li>
-                        <li>
-                            <Image src={"/second_review.png"} alt={"Первый отзыв"} fill
-                                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"/>
-                        </li>
-                        <li>
-                            <Image src={"/third_review.png"} alt={"Первый отзыв"} fill
-                                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"/>
-                        </li>
-                    </ul>
+                    <FadeInBottom>
+                        <h1 className={styles.reviews__title}>ОТЗЫВЫ</h1>
+                        <ul className={styles.reviews__list}>
+                            <li>
+                                <Image src={"/first_review.png"} alt={"Первый отзыв"} fill
+                                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"/>
+                            </li>
+                            <li>
+                                <Image src={"/second_review.png"} alt={"Первый отзыв"} fill
+                                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"/>
+                            </li>
+                            <li>
+                                <Image src={"/third_review.png"} alt={"Первый отзыв"} fill
+                                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"/>
+                            </li>
+                        </ul>
+                    </FadeInBottom>
                 </section>
                 <section id="contacts" className={styles.contacts__section}>
-                    <h1 className={styles.contacts__title}>КОНТАКТЫ</h1>
-                    <ul className={styles.social__list}>
-                        <li className={styles.social__item}>
-                            <a href="https://wa.me/+79145444097">
-                                <Image
-                                    src="/whatsapp.svg"
-                                    alt="whatsapp logo"
-                                    width={33}
-                                    height={33}
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                />
-                            </a>
-                        </li>
-                        <li className={styles.social__item}>
-                            <a href="https://www.instagram.com/massage_strogino_natalya">
-                                <Image
-                                    src="/instagram.svg"
-                                    alt="instagram logo"
-                                    width={45}
-                                    height={45}
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                />
-                            </a>
-                        </li>
-                        <li className={styles.social__item}>
-                            <a href="https://t.me/+79145444097">
-                                <Image
-                                    src="/telegram.svg"
-                                    alt="telegram logo"
-                                    width={35}
-                                    height={35}
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                />
-                            </a>
-                        </li>
-                    </ul>
-                    <div className={styles.contacts__address}>
-                        <h3>
-                            Адрес: <strong>Москва, Неманский пр., д.7к1</strong>
-                        </h3>
-                        <h3>
-                            {" "}
-                            Метро <strong>Строгино</strong>
-                        </h3>
-                    </div>
-                    <div className={styles.map__container}>
-                        <YandexMap/>
-                    </div>
+                    <FadeInBottom>
+                        <h1 className={styles.contacts__title}>КОНТАКТЫ</h1>
+                        <ul className={styles.social__list}>
+                            <li className={styles.social__item}>
+                                <a href="https://wa.me/+79145444097">
+                                    <Image
+                                        src="/whatsapp.svg"
+                                        alt="whatsapp logo"
+                                        width={30}
+                                        height={30}
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    />
+                                </a>
+                            </li>
+                            <li className={styles.social__item}>
+                                <a href="https://www.instagram.com/massage_strogino_natalya">
+                                    <Image
+                                        src="/instagram.svg"
+                                        alt="instagram logo"
+                                        width={45}
+                                        height={45}
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    />
+                                </a>
+                            </li>
+                            <li className={styles.social__item}>
+                                <a href="https://t.me/+79145444097">
+                                    <Image
+                                        src="/telegram.svg"
+                                        alt="telegram logo"
+                                        width={35}
+                                        height={35}
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    />
+                                </a>
+                            </li>
+                        </ul>
+                        <div className={styles.contacts__address}>
+                            <h3>
+                                Адрес: <strong>Москва, Неманский пр., д.7к1</strong>
+                            </h3>
+                            <h3>
+                                {" "}
+                                Метро <strong>Строгино</strong>
+                            </h3>
+                        </div>
+                    </FadeInBottom>
+                    <FadeInBottom delay={0.3}>
+                        <div className={styles.map__container}>
+                            <YandexMap/>
+                        </div>
+                    </FadeInBottom>
                 </section>
             </main>
         </div>

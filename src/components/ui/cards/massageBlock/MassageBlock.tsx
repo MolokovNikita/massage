@@ -1,8 +1,9 @@
-"use client"
+"use client";
 import styles from "./massage-block.module.scss";
 import Image from "next/image";
 import {JSX} from "react";
 import {useEffect, useState} from "react";
+import {FadeInBottom} from "@/components/ui/animations/AnimatedBlocks";
 
 export type PriceType = {
     time: string;
@@ -29,10 +30,7 @@ function ImageBlock({
                         imageSrc,
                         imageAlt,
                         isInverted = false,
-                    }: Pick<
-    MassageBlockProps,
-    "imageSrc" | "imageAlt" | "isInverted"
->): JSX.Element {
+                    }: Pick<MassageBlockProps, "imageSrc" | "imageAlt" | "isInverted">): JSX.Element {
     return (
         <div
             className={[
@@ -46,7 +44,8 @@ function ImageBlock({
                 src={imageSrc}
                 alt={imageAlt}
                 fill
-                sizes="(max-width: 1200px) 100vw, (max-width: 1400px) 50vw, 33vw"/>
+                sizes="(max-width: 1200px) 100vw, (max-width: 1400px) 50vw, 33vw"
+            />
         </div>
     );
 }
@@ -91,8 +90,10 @@ function TextBlock(
     );
 }
 
+
 export default function MassageBlock(props: MassageBlockProps): JSX.Element {
     const [isLargeScreen, setIsLargeScreen] = useState<boolean>(false);
+
     useEffect(() => {
         const checkScreenSize = () => {
             setIsLargeScreen(window.innerWidth > 1024);
@@ -107,21 +108,28 @@ export default function MassageBlock(props: MassageBlockProps): JSX.Element {
     }, []);
 
     return (
-
         <div className={styles.massage__block}>
             {props.isInverted && isLargeScreen ? (
                 <>
-                    <TextBlock {...props} />
-                    <ImageBlock
-                        imageSrc={props.imageSrc}
-                        imageAlt={props.imageAlt}
-                        isInverted={props.isInverted}
-                    />
+                    <FadeInBottom>
+                        <TextBlock {...props} />
+                    </FadeInBottom>
+                    <FadeInBottom>
+                        <ImageBlock
+                            imageSrc={props.imageSrc}
+                            imageAlt={props.imageAlt}
+                            isInverted={props.isInverted}
+                        />
+                    </FadeInBottom>
                 </>
             ) : (
                 <>
-                    <ImageBlock imageSrc={props.imageSrc} imageAlt={props.imageAlt}/>
-                    <TextBlock {...props} />
+                    <FadeInBottom>
+                        <ImageBlock imageSrc={props.imageSrc} imageAlt={props.imageAlt}/>
+                    </FadeInBottom>
+                    <FadeInBottom>
+                        <TextBlock {...props} />
+                    </FadeInBottom>
                 </>
             )}
         </div>

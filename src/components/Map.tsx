@@ -7,21 +7,21 @@ const YANDEX_MAP_API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 export default function YandexMap() {
     const mapRef = useRef<HTMLDivElement>(null);
     const [mapLoaded, setMapLoaded] = useState(false);
-    const [ymaps, setYmaps] = useState<any>(null);
-    const [mapInstance, setMapInstance] = useState<any>(null);
 
     useEffect(() => {
+        if (typeof window === "undefined") return;
+
+        if (window.ymaps) {
+            setMapLoaded(true);
+            return;
+        }
+
         const script = document.createElement("script");
         script.src = `https://api-maps.yandex.ru/2.1/?apikey=${YANDEX_MAP_API_KEY}&lang=ru_RU`;
         script.async = true;
 
         script.onload = () => {
-            // @ts-ignore
-            window.ymaps.ready(() => {
-                // @ts-ignore
-                setYmaps(window.ymaps);
-                setMapLoaded(true);
-            });
+            window.ymaps.ready(() => setMapLoaded(true));
         };
 
         document.head.appendChild(script);
@@ -32,16 +32,14 @@ export default function YandexMap() {
     }, []);
 
     useEffect(() => {
-        if (mapLoaded && ymaps && mapRef.current) {
-            // Создаем карту
-            const map = new ymaps.Map(mapRef.current, {
+        if (mapLoaded && mapRef.current) {
+            const map = new window.ymaps.Map(mapRef.current, {
                 center: [55.811771, 37.392895],
                 zoom: 16,
                 controls: ["zoomControl", "fullscreenControl"],
             });
 
-            // Добавляем маркер
-            const placemark = new ymaps.Placemark(
+            const placemark = new window.ymaps.Placemark(
                 [55.811771, 37.392895],
                 {
                     hintContent: "Студия массажа",
@@ -52,17 +50,14 @@ export default function YandexMap() {
                     iconImageHref: "/map-marker.png",
                     iconImageSize: [40, 40],
                     iconImageOffset: [-20, -40],
-                },
+                }
             );
 
             map.geoObjects.add(placemark);
-            setMapInstance(map);
 
-            return () => {
-                map.destroy();
-            };
+            return () => map.destroy();
         }
-    }, [mapLoaded, ymaps]);
+    }, [mapLoaded]);
 
     return (
         <div

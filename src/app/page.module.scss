@@ -1,5 +1,5 @@
 .page {
-  font-family: var(--font-cormorant);
+  font-family: var(--font-cormorant), serif;
 }
 
 .topic__section {
@@ -19,17 +19,17 @@
   }
   @media screen and (max-width: 660px) {
     padding: 0;
-    margin: 0;
-    margin-top: 5rem;
+    margin: 5rem 0 0;
     width: 100%;
   }
 
-  .image__wraper {
+  .image__wrapper {
     width: 50%;
     max-width: 600px;
     min-width: unset;
     height: auto;
     margin: 20px;
+    position: relative;
 
     @media screen and (max-width: 1250px) {
       width: 80%;
@@ -55,11 +55,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 6rem 0;
-    margin-left: 5rem;
+    margin: 6rem 0 6rem 5rem;
     @media (max-width: 1024px) {
-      margin: 0;
-      margin-top: 3rem;
+      margin: 3rem 0 0;
       padding: 0 3rem;
     }
 
@@ -111,8 +109,6 @@
       margin-top: 5rem;
     }
   }
-
-
 }
 
 .services__section {
@@ -127,7 +123,7 @@
   }
 
   .services__title {
-    font-family: var(--font-cormorant);
+    font-family: var(--font-cormorant), serif;
     margin: 0 auto;
     font-size: 2.2em;
     font-weight: 400;
@@ -135,15 +131,14 @@
   }
 
   .services__subtitle {
-    font-family: var(--font-cormorant);
+    font-family: var(--font-cormorant), serif;
     display: flex;
     align-items: center;
     text-align: center;
-    margin: 0 auto;
     font-size: 1.1em;
     font-weight: 400;
     font-style: italic;
-    margin-top: 1rem;
+    margin: 1rem auto 0;
   }
 }
 
@@ -151,7 +146,7 @@
   .course__title {
     display: flex;
     justify-content: center;
-    font-family: var(--font-cormorant);
+    font-family: var(--font-cormorant), serif;
     margin: 0 auto;
     font-size: 2.2em;
     font-weight: 400;
@@ -160,16 +155,15 @@
 
   .course__subtitle {
     width: 100%;
-    font-family: var(--font-cormorant);
+    font-family: var(--font-cormorant), serif;
     margin: 0 auto;
     font-size: 1.1em;
     font-weight: 400;
     font-style: italic;
-    width: 100%;
     text-align: center;
 
     .course__price {
-      font-family: var(--font-cormorant);
+      font-family: var(--font-cormorant), serif;
       font-size: 1.5em;
       font-weight: bold;
       color: rgb(243, 181, 239);
@@ -179,10 +173,8 @@
   .course__includes {
     display: flex;
     justify-content: center;
-    font-family: var(--font-cormorant);
-    margin: 0 auto;
-    margin-top: 1rem;
-    margin-bottom: 3rem;
+    font-family: var(--font-cormorant), serif;
+    margin: 1rem auto 3rem;
     font-size: 2.2em;
     font-weight: 400;
   }
@@ -190,7 +182,7 @@
   .course_description__container {
     width: 60%;
     margin: 0 auto;
-    font-family: var(--font-cormorant);
+    font-family: var(--font-cormorant), serif;
     font-weight: 400;
     font-size: 1.6em;
     @media (max-width: 720px) {
@@ -224,9 +216,8 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-family: var(--font-cormorant);
-    margin: 0 auto;
-    margin-bottom: 3rem;
+    font-family: var(--font-cormorant), serif;
+    margin: 0 auto 3rem;
     font-size: 2.2em;
     font-weight: 400;
     font-style: italic;
@@ -243,9 +234,8 @@
   .reviews__title {
     display: flex;
     justify-content: center;
-    font-family: var(--font-cormorant);
-    margin: 6rem auto;
-    margin-bottom: 3rem;
+    font-family: var(--font-cormorant), serif;
+    margin: 6rem auto 3rem;
     font-size: 2.2em;
     font-weight: 400;
     font-style: italic;
@@ -258,11 +248,10 @@
     li {
       display: flex;
       position: relative;
-      margin: 0 auto;
       width: 40%;
       max-width: 700px;
       height: 250px;
-      margin-bottom: 3rem;
+      margin: 0 auto 3rem;
       min-width: 400px;
       @media screen and (max-width: 450px) {
         min-width: unset;
@@ -281,9 +270,8 @@
   .contacts__title {
     display: flex;
     justify-content: center;
-    font-family: var(--font-cormorant);
-    margin: 0 auto;
-    margin-bottom: 3rem;
+    font-family: var(--font-cormorant), serif;
+    margin: 0 auto 3rem;
     font-size: 2.2em;
     font-weight: 400;
     font-style: italic;
@@ -349,8 +337,7 @@
     height: 500px;
     display: flex;
     justify-content: center;
-    margin: 0 auto;
-    margin-bottom: 10rem;
+    margin: 0 auto 10rem;
     @media screen and (max-width: 1700px) {
       width: 80%;
     }
