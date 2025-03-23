@@ -1,4 +1,4 @@
-.modalOverlay {
+.modal__overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -13,7 +13,7 @@
   animation: fadeIn 0.3s ease;
 }
 
-.modalContent {
+.modal__content {
   background: #fff;
   padding: 40px;
   border-radius: 20px;
@@ -23,7 +23,7 @@
   animation: slideUp 0.3s ease;
 }
 
-.closeButton {
+.close__button {
   position: absolute;
   top: 15px;
   right: 15px;
@@ -41,20 +41,20 @@
   }
 }
 
-.modalTitle {
+.modal__title {
   text-align: center;
   margin-bottom: 30px;
   color: #333;
   font-size: 1.8rem;
 }
 
-.modalForm {
+.modal__form {
   display: flex;
   flex-direction: column;
   gap: 25px;
 }
 
-.inputGroup {
+.input__group {
   position: relative;
   width: 100%;
 
@@ -81,7 +81,7 @@
   }
 }
 
-.inputBorder {
+.input__border {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -91,7 +91,7 @@
   transition: width 0.3s ease;
 }
 
-.selectWrapper {
+.select__wrapper {
   position: relative;
 
   select {
@@ -111,7 +111,7 @@
   }
 }
 
-.submitButton {
+.submit__button {
   background: linear-gradient(135deg, #f3b5ef 0%, #e89de3 100%);
   border: none;
   padding: 15px;
@@ -144,7 +144,7 @@
   animation: spin 1s ease-in-out infinite;
 }
 
-.successMessage {
+.success__message {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -162,7 +162,7 @@
   }
 }
 
-.errorMessage {
+.error__message {
   color: #d32f2f;
   background: #ffebee;
   padding: 12px;
@@ -198,20 +198,20 @@
 }
 
 @media (max-width: 480px) {
-  .modalContent {
+  .modal__content {
     padding: 25px;
   }
 
-  .modalTitle {
+  .modal__title {
     font-size: 1.4rem;
   }
 
-  .modalForm {
+  .modal__form {
     gap: 20px;
   }
 }
 
-.phoneWrapper {
+.phone__wrapper {
   display: flex;
   align-items: center;
   width: 100%;

@@ -50,17 +50,20 @@ export default function SignModal({ onClose }: ModalProps) {
   };
 
   return (
-    <div className={styles.modalOverlay} onClick={onClose}>
-      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-        <button className={styles.closeButton} onClick={onClose}>
+    <div className={styles.modal__overlay} onClick={onClose}>
+      <div
+        className={styles.modal__content}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button className={styles.close__button} onClick={onClose}>
           &times;
         </button>
 
-        <h2 className={styles.modalTitle}>Запись на сеанс</h2>
+        <h2 className={styles.modal__title}>Запись на сеанс</h2>
 
         {!success ? (
-          <form onSubmit={handleSubmit} className={styles.modalForm}>
-            <div className={styles.inputGroup}>
+          <form onSubmit={handleSubmit} className={styles.modal__form}>
+            <div className={styles.input__group}>
               <input
                 type="text"
                 required
@@ -70,11 +73,11 @@ export default function SignModal({ onClose }: ModalProps) {
                   setFormData({ ...formData, name: e.target.value })
                 }
               />
-              <span className={styles.inputBorder} />
+              <span className={styles.input__border} />
             </div>
 
-            <div className={styles.inputGroup}>
-              <div className={styles.phoneWrapper}>
+            <div className={styles.input__group}>
+              <div className={styles.phone__wrapper}>
                 <span className={styles.flag}>🇷🇺</span>
                 <IMaskInput
                   mask="+7 (000) 000-00-00"
@@ -87,10 +90,10 @@ export default function SignModal({ onClose }: ModalProps) {
                   }
                 />
               </div>
-              <span className={styles.inputBorder} />
+              <span className={styles.input__border} />
             </div>
 
-            <div className={styles.selectWrapper}>
+            <div className={styles.select__wrapper}>
               <select
                 required
                 value={formData.service}
@@ -105,11 +108,11 @@ export default function SignModal({ onClose }: ModalProps) {
               </select>
             </div>
 
-            {error && <div className={styles.errorMessage}>{error}</div>}
+            {error && <div className={styles.error__message}>{error}</div>}
 
             <button
               type="submit"
-              className={styles.submitButton}
+              className={styles.submit__button}
               disabled={loading}
             >
               {loading ? (
@@ -120,7 +123,7 @@ export default function SignModal({ onClose }: ModalProps) {
             </button>
           </form>
         ) : (
-          <div className={styles.successMessage}>
+          <div className={styles.success__message}>
             <svg viewBox="0 0 24 24">
               <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
             </svg>
