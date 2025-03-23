@@ -2,6 +2,17 @@
   font-family: var(--font-cormorant), serif;
 }
 
+.visually__hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 .topic__section {
   display: flex;
   flex-direction: row;
@@ -17,6 +28,7 @@
     height: auto;
     margin-top: 30px;
   }
+
   @media screen and (max-width: 660px) {
     padding: 0;
     margin: 5rem 0 0;
@@ -34,6 +46,7 @@
     @media screen and (max-width: 1250px) {
       width: 80%;
     }
+
     @media (max-width: 1024px) {
       width: 100%;
       max-width: 500px;
@@ -56,12 +69,14 @@
     flex-direction: column;
     justify-content: center;
     margin: 6rem 0 6rem 5rem;
+
     @media (max-width: 1024px) {
       margin: 3rem 0 0;
       padding: 0 3rem;
     }
 
-    h3 {
+    h3,
+    p {
       font-size: 1.6em;
       font-weight: 400;
       margin-bottom: 1rem;
@@ -74,7 +89,6 @@
 
     .topic_container__list {
       display: flex;
-      font-size: 1.6em;
       font-weight: 400;
       flex-direction: column;
       margin-left: 1rem;
@@ -111,10 +125,11 @@
   }
 }
 
+
 .services__section {
   display: flex;
   flex-direction: column;
-  max-width: 1550px;
+  max-width: 1700px;
   margin: 0 auto;
   width: 100%;
 
@@ -143,6 +158,9 @@
 }
 
 .course__section {
+  // font-size: 1.1em;
+  font-weight: 400;
+
   .course__title {
     display: flex;
     justify-content: center;
@@ -157,8 +175,7 @@
     width: 100%;
     font-family: var(--font-cormorant), serif;
     margin: 0 auto;
-    font-size: 1.1em;
-    font-weight: 400;
+
     font-style: italic;
     text-align: center;
 
@@ -185,6 +202,7 @@
     font-family: var(--font-cormorant), serif;
     font-weight: 400;
     font-size: 1.6em;
+
     @media (max-width: 720px) {
       width: 80%;
     }
@@ -200,8 +218,17 @@
       list-style: none;
 
       li {
+        display: flex;
+
+        p {
+          margin-left: 1rem;
+        }
+
         &::before {
-          content: "→ ";
+          content: "→";
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
       }
     }
@@ -253,6 +280,7 @@
       height: 250px;
       margin: 0 auto 3rem;
       min-width: 400px;
+
       @media screen and (max-width: 450px) {
         min-width: unset;
         width: 100%;
@@ -338,15 +366,13 @@
     display: flex;
     justify-content: center;
     margin: 0 auto 10rem;
+
     @media screen and (max-width: 1700px) {
       width: 80%;
     }
- 
+
     @media screen and (max-width: 310px) {
       min-width: unset;
     }
   }
 }
-
-
-
