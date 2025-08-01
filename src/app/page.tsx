@@ -93,18 +93,19 @@ export default function Page() {
               "Здоровое и стройное тело без диет и физических нагрузок",
             ]}
             price={[
-              { time: "30 мин", price: 1500 },
-              { time: "45 мин", price: 1800 },
+              { time: "30 мин", price: 1600 },
+              { time: "45 мин", price: 2200 },
               {
                 time: "60 мин",
-                price: 2200,
+                price: 2700,
               },
-              { time: "75 мин", price: 2500 },
+              { time: "75 мин", price: 3000 },
             ]}
             abonement={[
-              { time: "45 мин", price: 16200 },
-              { time: "60 мин", price: 19500 },
-              { time: "75 мин", price: 22300 },
+              { time: "30 мин", price: 1300 },
+              { time: "45 мин", price: 1800 },
+              { time: "60 мин", price: 2300 },
+              { time: "75 мин", price: 2500 },
             ]}
             isInverted={false}
           />
@@ -123,8 +124,14 @@ export default function Page() {
               "Улучшения кровообращения и вывода токсинов",
               "Повышения эластичности кожи",
             ]}
-            price={[{ time: "45 мин", price: 1200 }]}
-            abonement={[{ time: "45 мин", price: 10000 }]}
+            price={[
+              { time: "45 мин", price: 1500 },
+              { time: "60 мин", price: 2000 }
+            ]}
+            abonement={[
+              { time: "45 мин", price: 1300 },
+              { time: "60 мин", price: 1700 }
+            ]}
             isInverted={true}
           />
 
@@ -142,10 +149,73 @@ export default function Page() {
               "Улучшения циркуляции крови",
               "Борьбы с отечностью и застоем жидкостей",
             ]}
-            price={[{ time: "45 мин", price: 1200 }]}
-            abonement={[{ time: "30 мин", price: 10000 }]}
+            price={[
+              { time: "45 мин", price: 1500 },
+              { time: "60 мин", price: 2000 }
+            ]}
+            abonement={[
+              { time: "45 мин", price: 1300 },
+              { time: "60 мин", price: 1700 }
+            ]}
             isInverted={false}
           />
+
+          <MassageBlock
+            imageSrc={"/ems_rf_massage.png"}
+            imageAlt={"Массаж EMS + RF"}
+            title={"EMS + RF"}
+            content={
+              "Комбинированный массаж\n" +
+              "Сочетание электромиостимуляции и радиочастотного воздействия\n" +
+              "для максимального эффекта. Подходит для:"
+            }
+            list={[
+              "Улучшения тонуса мышц",
+              "Сжигания жировых отложений",
+              "Подтяжки кожи и омоложения",
+              "Коррекции фигуры",
+            ]}
+            price={[
+              { time: "1 манипула, 30 мин", price: 750 },
+              { time: "2 манипулы, 30 мин", price: 1300 },
+              { time: "3 манипулы, 30 мин", price: 1800 },
+              { time: "4 манипулы, 30 мин", price: 2000 },
+            ]}
+            abonement={[
+              { time: "1 манипула, 30 мин", price: 650 },
+              { time: "2 манипулы, 30 мин", price: 1100 },
+              { time: "3 манипулы, 30 мин", price: 1500 },
+              { time: "4 манипулы, 30 мин", price: 1700 },
+            ]}
+            isInverted={true}
+          />
+
+          <MassageBlock
+            imageSrc={"/rf_lifting.png"}
+            imageAlt={"RF лифтинг"}
+            title={"RF ЛИФТИНГ"}
+            content={
+              "Радиочастотный лифтинг\n" +
+              "Современная технология омоложения кожи\n" +
+              "с помощью радиочастотного воздействия. Идеально для:"
+            }
+            list={[
+              "Подтяжки кожи лица и тела",
+              "Уменьшения морщин",
+              "Улучшения эластичности кожи",
+              "Омоложения и восстановления",
+            ]}
+            price={[
+              { time: "Тело, 1 зона, 45 мин", price: 1500 },
+              { time: "Лицо, шея, декольте, 30 мин", price: 1200 },
+            ]}
+            abonement={[
+              { time: "Тело, 1 зона, 45 мин", price: 1300 },
+              { time: "Лицо, шея, декольте, 30 мин", price: 1200 },
+            ]}
+            isInverted={false}
+          />
+
           <section className={styles.course__section}>
             <FadeInLeft>
               <h2 className={styles.course__title}>КУРС ПОХУДЕНИЯ</h2>
