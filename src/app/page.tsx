@@ -95,17 +95,14 @@ export default function Page() {
             price={[
               { time: "30 мин", price: 1600 },
               { time: "45 мин", price: 2200 },
-              {
-                time: "60 мин",
-                price: 2700,
-              },
+              { time: "60 мин", price: 2700 },
               { time: "75 мин", price: 3000 },
             ]}
             abonement={[
-              { time: "30 мин", price: 1300 },
-              { time: "45 мин", price: 1800 },
-              { time: "60 мин", price: 2300 },
-              { time: "75 мин", price: 2500 },
+              { time: "30 мин", price: 1600 },
+              { time: "45 мин", price: 2200 },
+              { time: "60 мин", price: 2700 },
+              { time: "75 мин", price: 3000 },
             ]}
             isInverted={false}
           />
@@ -222,8 +219,8 @@ export default function Page() {
             </FadeInLeft>
             <FadeInLeft delay={0.2}>
               <h3 className={styles.course__subtitle}>
-                10 сеансов от{" "}
-                <span className={styles.course__price}>10 990</span> руб.
+                8 сеансов от{" "}
+                <span className={styles.course__price}>13 990</span> руб.
               </h3>
             </FadeInLeft>
             <FadeInRight>
